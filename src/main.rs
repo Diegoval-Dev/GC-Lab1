@@ -15,6 +15,7 @@ fn main() {
     let height = 600;
     let mut framebuffer = Framebuffer::new(width, height);
 
+    // Polígono 1
     let vertices1 = vec![
         glm::Vec3::new(165.0, 380.0, 0.0),
         glm::Vec3::new(185.0, 360.0, 0.0),
@@ -28,12 +29,11 @@ fn main() {
         glm::Vec3::new(193.0, 383.0, 0.0),
     ];
 
-    framebuffer.set_current_color(Color::new(255, 255, 255));
-    draw_polygon(&mut framebuffer, &vertices1, Color::new(255, 255, 255));
-
     framebuffer.set_current_color(Color::new(255, 255, 0));
     fill_polygon(&mut framebuffer, &vertices1, Color::new(255, 255, 0));
 
-    // Renderiza el buffer a un archivo BMP
-    framebuffer.render_buffer("output.bmp").unwrap();
+    framebuffer.set_current_color(Color::new(255, 255, 255));
+    draw_polygon(&mut framebuffer, &vertices1, Color::new(255, 255, 255));
+
+    framebuffer.render_buffer("poligono1.bmp").unwrap();
 }
