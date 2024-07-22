@@ -5,19 +5,19 @@ use crate::line_impl::draw_line;
 
 pub fn draw_polygon(framebuffer: &mut Framebuffer, vertices: &[glm::Vec3], color: Color) {
     if vertices.len() < 3 {
-        return; // No es un polígono si tiene menos de 3 vértices
+        return; 
     }
 
     for i in 0..vertices.len() {
         let v1 = &vertices[i];
-        let v2 = &vertices[(i + 1) % vertices.len()]; // Cierra el polígono
+        let v2 = &vertices[(i + 1) % vertices.len()]; 
         draw_line(framebuffer, v1, v2, color);
     }
 }
 
 pub fn fill_polygon(framebuffer: &mut Framebuffer, vertices: &[glm::Vec3], color: Color) {
     if vertices.len() < 3 {
-        return; // No es un polígono si tiene menos de 3 vértices
+        return; 
     }
 
     let mut y_min = vertices[0].y as isize;
