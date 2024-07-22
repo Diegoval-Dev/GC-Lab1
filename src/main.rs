@@ -13,7 +13,13 @@ mod bmp;
 fn main() {
     let width = 800;
     let height = 600;
+<<<<<<< HEAD
     let mut framebuffer = Framebuffer::new(width, height);
+=======
+    
+    // Framebuffer para el Polígono 1
+    let mut framebuffer1 = Framebuffer::new(width, height);
+>>>>>>> Poligon-2
 
     // Polígono 1
     let vertices1 = vec![
@@ -29,6 +35,7 @@ fn main() {
         glm::Vec3::new(193.0, 383.0, 0.0),
     ];
 
+<<<<<<< HEAD
     framebuffer.set_current_color(Color::new(255, 255, 0));
     fill_polygon(&mut framebuffer, &vertices1, Color::new(255, 255, 0));
 
@@ -36,4 +43,38 @@ fn main() {
     draw_polygon(&mut framebuffer, &vertices1, Color::new(255, 255, 255));
 
     framebuffer.render_buffer("poligono1.bmp").unwrap();
+=======
+    framebuffer1.set_current_color(Color::new(255, 255, 0));
+    fill_polygon(&mut framebuffer1, &vertices1, Color::new(255, 255, 0));
+
+    framebuffer1.set_current_color(Color::new(255, 255, 255));
+    draw_polygon(&mut framebuffer1, &vertices1, Color::new(255, 255, 255));
+    framebuffer1.render_buffer("polygon1.bmp").unwrap();
+
+    // Framebuffer para ambos polígonos
+    let mut framebuffer2 = Framebuffer::new(width, height);
+
+    // Polígono 1
+    framebuffer2.set_current_color(Color::new(255, 255, 0));
+    fill_polygon(&mut framebuffer2, &vertices1, Color::new(255, 255, 0));
+
+    framebuffer2.set_current_color(Color::new(255, 255, 255));
+    draw_polygon(&mut framebuffer2, &vertices1, Color::new(255, 255, 255));
+
+    // Polígono 2
+    let vertices2 = vec![
+        glm::Vec3::new(321.0, 335.0, 0.0),
+        glm::Vec3::new(288.0, 286.0, 0.0),
+        glm::Vec3::new(339.0, 251.0, 0.0),
+        glm::Vec3::new(374.0, 302.0, 0.0),
+    ];
+
+    framebuffer2.set_current_color(Color::new(0, 0, 255));
+    fill_polygon(&mut framebuffer2, &vertices2, Color::new(0, 0, 255));
+
+    framebuffer2.set_current_color(Color::new(255, 255, 255));
+    draw_polygon(&mut framebuffer2, &vertices2, Color::new(255, 255, 255));
+
+    framebuffer2.render_buffer("output_polygon1_and_2.bmp").unwrap();
+>>>>>>> Poligon-2
 }
