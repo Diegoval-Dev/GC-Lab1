@@ -36,9 +36,11 @@ fn main() {
 
     framebuffer1.set_current_color(Color::new(255, 255, 255));
     draw_polygon(&mut framebuffer1, &vertices1, Color::new(255, 255, 255));
-    framebuffer1.render_buffer("polygon1.bmp").unwrap();
 
-    // Framebuffer para ambos polígonos
+    // Guardar la imagen del Polígono 1
+    framebuffer1.render_buffer("output_polygon1.bmp").unwrap();
+
+    // Framebuffer para los tres polígonos
     let mut framebuffer2 = Framebuffer::new(width, height);
 
     // Polígono 1
@@ -62,5 +64,19 @@ fn main() {
     framebuffer2.set_current_color(Color::new(255, 255, 255));
     draw_polygon(&mut framebuffer2, &vertices2, Color::new(255, 255, 255));
 
-    framebuffer2.render_buffer("output_polygon1_and_2.bmp").unwrap();
+    // Polígono 3
+    let vertices3 = vec![
+        glm::Vec3::new(377.0, 249.0, 0.0),
+        glm::Vec3::new(411.0, 197.0, 0.0),
+        glm::Vec3::new(436.0, 249.0, 0.0),
+    ];
+
+    framebuffer2.set_current_color(Color::new(255, 0, 0));
+    fill_polygon(&mut framebuffer2, &vertices3, Color::new(255, 0, 0));
+
+    framebuffer2.set_current_color(Color::new(255, 255, 255));
+    draw_polygon(&mut framebuffer2, &vertices3, Color::new(255, 255, 255));
+
+    // Guardar la imagen de los tres polígonos
+    framebuffer2.render_buffer("output_polygon1_2_3.bmp").unwrap();
 }
